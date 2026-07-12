@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Active le mode sombre basé sur la classe .dark (utilisée dans App.jsx) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Optionnel : police de base + lissage */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
