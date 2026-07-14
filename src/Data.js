@@ -76,37 +76,23 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex1q1",
         statement:
-          "En utilisant SymPy, déclarez `x` comme une variable symbolique **réelle** à l'aide de `symbols()`, puis utilisez la fonction `simplify()` pour simplifier l'expression $\\dfrac{x^2-1}{x-1}$.",
+          "Complétez la fonction `resoudre_equation`, qui résout l'équation `expression = 0` par rapport à `variable` avec la fonction `solve()` de SymPy.",
         initialCode:
-          "from sympy import symbols, simplify\n\n# Déclarez x comme une variable symbolique réelle (real=True)\n# Votre code ici\n\nexpr = (x**2 - 1) / (x - 1)\n\n# Simplifiez expr à l'aide de simplify()\nresultat = ______\n\nprint(resultat)\n",
+          "from sympy import solve\n\ndef resoudre_equation(expression, variable):\n    # TODO : résoudre expression = 0 par rapport à variable avec solve()\n    return solutions\n",
       },
       {
         id: "ex1q2",
         statement:
-          "On exécute le code suivant avec SymPy :\n\n```python\nfrom sympy import symbols, factor\nx = symbols('x')\nexpr = x**2 - 9\nresult = factor(expr)\nprint(result)\n```\n\nQuelle est la sortie affichée par ce programme ?\n\nA. `x**2 - 9`\nB. `(x - 3)*(x + 3)`\nC. `(x - 9)*(x + 1)`\nD. `x*(x - 9)`\n\nÉcrivez la lettre correspondant à la bonne réponse.",
+          "Complétez la fonction `simplifier_expression`, qui simplifie une expression symbolique avec la fonction `simplify()` de SymPy.",
         initialCode:
-          "# Question à choix multiple\n# Écrivez la lettre de la bonne réponse (A, B, C ou D) entre guillemets\n\nreponse = \"\"\n",
+          "from sympy import simplify\n\ndef simplifier_expression(expression):\n    # TODO : simplifier expression avec simplify()\n    return resultat\n",
       },
       {
         id: "ex1q3",
         statement:
-          "Soit $f(x) = x^2 - 4$. On souhaite d'abord trouver les racines de $f(x) = 0$ avec `solve()`, puis vérifier avec `subs()` que la première racine trouvée annule bien $f$. Complétez le code ci-dessous.",
+          "La fonction `resoudre_equation(expression, variable)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous : déclarez `x`, construisez l'expression $x^2 - 5x + 6$, appelez la fonction et affichez le résultat.",
         initialCode:
-          "from sympy import symbols, solve\n\nx = symbols('x', real=True)\nf = x**2 - 4\n\n# Trouvez les racines de f avec solve()\nracines = ______\n\n# Substituez la première racine dans f pour vérifier qu'elle l'annule\nverification = f.subs(x, ______)\n\nprint(racines, verification)\n",
-      },
-      {
-        id: "ex1q4",
-        statement:
-          "On souhaite développer l'expression $(x + 3)^2 - x$ avec SymPy. Complétez le code ci-dessous à l'aide de la fonction `expand()`.",
-        initialCode:
-          "from sympy import symbols, expand\n\nx = symbols('x')\nexpr = (x + 3)**2 - x\n\n# Développez expr à l'aide de expand()\nresultat = ______\n\nprint(resultat)\n",
-      },
-      {
-        id: "ex1q5",
-        statement:
-          "Soit $f(x, y) = x^2y + 3xy^2$. Calculez le gradient $\\nabla f = \\left(\\dfrac{\\partial f}{\\partial x}, \\dfrac{\\partial f}{\\partial y}\\right)$ avec `diff()`, puis évaluez ce gradient au point $(x, y) = (1, 2)$ à l'aide de `subs()`.",
-        initialCode:
-          "from sympy import symbols, diff\n\nx, y = symbols('x y', real=True)\nf = x**2*y + 3*x*y**2\n\n# Calculez les dérivées partielles df/dx et df/dy\ndfx = ______\ndfy = ______\n\n# Évaluez le gradient au point (1, 2)\ngrad_point = (dfx.subs({x: 1, y: 2}), dfy.subs({x: 1, y: 2}))\n\nprint(grad_point)\n",
+          "from sympy import symbols, solve\n\ndef resoudre_equation(expression, variable):\n    return solve(expression, variable)\n\n\n# TODO : déclarer x comme variable symbolique réelle avec symbols()\nexpression = x**2 - 5*x + 6\n# TODO : appeler resoudre_equation avec expression et x\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -119,30 +105,23 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex2q1",
         statement:
-          "Complétez l'algorithme de dichotomie ci-dessous, qui recherche une racine de `f` sur $[a, b]$ en s'arrêtant lorsque la largeur de l'intervalle est inférieure à `eps`.",
+          "Complétez l'algorithme de dichotomie, qui recherche une racine de `f` sur $[a, b]$ en s'arrêtant lorsque la largeur de l'intervalle est inférieure à `eps`.",
         initialCode:
-          "def dichotomie(f, a, b, eps):\n    while ______:\n        m = ______\n        if f(a) * f(m) <= 0:\n            b = ______\n        else:\n            a = ______\n    return (a + b) / 2\n",
+          "def dichotomie(f, a, b, eps):\n    while (b - a) > eps:\n        # TODO : calculer le milieu m de l'intervalle [a, b]\n        if f(a) * f(m) <= 0:\n            # TODO : mettre à jour b avec m\n        else:\n            # TODO : mettre à jour a avec m\n    return (a + b) / 2\n",
       },
       {
         id: "ex2q2",
         statement:
-          "Complétez la fonction `critere_arret` ci-dessous, qui renvoie `True` tant que l'on doit continuer les itérations, c'est-à-dire tant que la largeur de l'intervalle $[a, b]$ dépasse la tolérance `eps`.",
+          "Complétez la fonction `critere_arret`, qui renvoie `True` tant que l'on doit continuer les itérations, c'est-à-dire tant que la largeur de l'intervalle $[a, b]$ dépasse la tolérance `eps`.",
         initialCode:
-          "def critere_arret(a, b, eps):\n    # Renvoyez True tant que (b - a) dépasse eps\n    return ______\n",
+          "def critere_arret(a, b, eps):\n    # TODO : renvoyer True tant que (b - a) dépasse eps\n    return resultat\n",
       },
       {
         id: "ex2q3",
         statement:
-          "On souhaite réécrire la dichotomie avec un nombre fixe d'itérations `n_iter`, à l'aide d'une boucle `for` plutôt que d'une boucle `while`. Complétez le code ci-dessous.",
+          "La fonction `dichotomie(f, a, b, eps)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour trouver une racine de $f(x) = x^2 - 2$ sur l'intervalle $[1, 2]$.",
         initialCode:
-          "def dichotomie_for(f, a, b, n_iter):\n    for i in range(______):\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:\n            b = m\n        else:\n            ______\n    return (a + b) / 2\n",
-      },
-      {
-        id: "ex2q4",
-        statement:
-          "**Exercice d'application.** Soit $f(x) = x^2 - 2$ et l'intervalle de départ $[a, b] = [1, 2]$, avec $f(1) = -1$ et $f(2) = 2$ (signes opposés). On effectue **une seule itération** de la méthode de dichotomie. Calculez le milieu `m`, puis complétez la mise à jour de l'intervalle $[a, b]$ pour l'itération suivante.",
-        initialCode:
-          "def f(x):\n    return x**2 - 2\n\na, b = 1, 2\n\n# Calculez le milieu m de l'intervalle [a, b]\nm = ______\n\n# f(a) = -1. Complétez la mise à jour de l'intervalle\n# selon le signe de f(a) * f(m)\nif f(a) * f(m) <= 0:\n    b = ______\nelse:\n    a = ______\n\nprint(a, b)\n",
+          "def dichotomie(f, a, b, eps):\n    while (b - a) > eps:\n        m = (a + b) / 2\n        if f(a) * f(m) <= 0:\n            b = m\n        else:\n            a = m\n    return (a + b) / 2\n\n\n# TODO : définir une fonction f telle que f(x) = x**2 - 2\na = 1\nb = 2\neps = 0.0001\n# TODO : appeler dichotomie avec f, a, b et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -155,16 +134,16 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex3q1",
         statement:
-          "Complétez l'algorithme de la section dorée ci-dessous : le calcul du nombre d'or `phi`, et la mise à jour du point intérieur `c` (dans la branche `if`) et du point intérieur `d` (dans la branche `else`).",
+          "Complétez l'algorithme de la section dorée : le calcul du nombre d'or `phi`, et la mise à jour des bornes `a` et `b` selon la comparaison de $f(c)$ et $f(d)$.",
         initialCode:
-          "import math\n\ndef section_doree(f, a, b, eps):\n    phi = ______\n    c = b - phi * (b - a)\n    d = a + phi * (b - a)\n    fc, fd = f(c), f(d)\n\n    while (b - a) > eps:\n        if fc < fd:\n            b = d\n            d = c\n            fd = fc\n            c = ______\n            fc = f(c)\n        else:\n            a = c\n            c = d\n            fc = fd\n            d = ______\n            fd = f(d)\n    return (a + b) / 2\n",
+          "import math\n\ndef section_doree(f, a, b, eps):\n    # TODO : calculer phi, le nombre d'or ((racine de 5 - 1) / 2)\n    c = b - phi * (b - a)\n    d = a + phi * (b - a)\n    while (b - a) > eps:\n        if f(c) < f(d):\n            # TODO : mettre à jour b avec d\n        else:\n            # TODO : mettre à jour a avec c\n        c = b - phi * (b - a)\n        d = a + phi * (b - a)\n    return (a + b) / 2\n",
       },
       {
         id: "ex3q2",
         statement:
-          "On souhaite exécuter la section dorée avec un nombre fixe d'itérations `n_iter` (boucle `for`) plutôt qu'un critère de tolérance. Complétez le code ci-dessous.",
+          "La fonction `section_doree(f, a, b, eps)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour trouver le minimum de $f(x) = (x - 2)^2$ sur l'intervalle $[0, 5]$.",
         initialCode:
-          "import math\n\ndef section_doree_for(f, a, b, n_iter):\n    phi = (math.sqrt(5) - 1) / 2\n    c = b - phi * (b - a)\n    d = a + phi * (b - a)\n    fc, fd = f(c), f(d)\n\n    for i in range(______):\n        if fc < fd:\n            b = d\n            d = c\n            fd = fc\n            c = b - phi * (b - a)\n            fc = f(c)\n        else:\n            a = c\n            c = d\n            fc = fd\n            d = ______\n            fd = f(d)\n    return (a + b) / 2\n",
+          "import math\n\ndef section_doree(f, a, b, eps):\n    phi = (math.sqrt(5) - 1) / 2\n    c = b - phi * (b - a)\n    d = a + phi * (b - a)\n    while (b - a) > eps:\n        if f(c) < f(d):\n            b = d\n        else:\n            a = c\n        c = b - phi * (b - a)\n        d = a + phi * (b - a)\n    return (a + b) / 2\n\n\n# TODO : définir une fonction f telle que f(x) = (x - 2) ** 2\na = 0\nb = 5\neps = 0.001\n# TODO : appeler section_doree avec f, a, b et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -177,16 +156,16 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex4q1",
         statement:
-          "Complétez la fonction `gradient_pas_fixe` ci-dessous : la condition d'arrêt (norme du gradient supérieure à `eps`) et la mise à jour de `x` selon $x_{k+1} = x_k - \\alpha \\nabla f(x_k)$.",
+          "Complétez la fonction `gradient_pas_fixe` : la mise à jour de `x` selon $x_{k+1} = x_k - \\alpha \\nabla f(x_k)$.",
         initialCode:
-          "import numpy as np\n\ndef gradient_pas_fixe(grad, x0, alpha, eps):\n    x = x0\n    g = grad(x)\n    while ______:\n        x = ______\n        g = grad(x)\n    return x\n",
+          "def gradient_pas_fixe(grad, x0, alpha, eps):\n    x = x0\n    while abs(grad(x)) > eps:\n        # TODO : mettre à jour x selon x = x - alpha * grad(x)\n    return x\n",
       },
       {
         id: "ex4q2",
         statement:
-          "Un pas `alpha` trop petit ralentit fortement la convergence de l'algorithme, au point de nécessiter un très grand nombre d'itérations. Pour éviter que la boucle ne tourne indéfiniment dans ce cas, on ajoute un nombre maximal d'itérations `max_iter`. Complétez le code ci-dessous.",
+          "La fonction `gradient_pas_fixe(grad, x0, alpha, eps)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour $f(x) = x^2$ (dont le gradient est $2x$).",
         initialCode:
-          "import numpy as np\n\ndef gradient_pas_fixe_securise(grad, x0, alpha, eps, max_iter):\n    x = x0\n    g = grad(x)\n    iterations = 0\n    while np.linalg.norm(g) > eps and ______:\n        x = x - alpha * g\n        g = grad(x)\n        iterations = ______\n    return x, iterations\n",
+          "def gradient_pas_fixe(grad, x0, alpha, eps):\n    x = x0\n    while abs(grad(x)) > eps:\n        x = x - alpha * grad(x)\n    return x\n\n\n# TODO : définir une fonction grad telle que grad(x) = 2 * x\nx0 = 10\nalpha = 0.1\neps = 0.0001\n# TODO : appeler gradient_pas_fixe avec grad, x0, alpha et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -199,9 +178,16 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex5q1",
         statement:
-          "Pour $f(x) = x^2$, on définit $\\phi(\\alpha) = f(x_k - \\alpha \\nabla f(x_k))$. Complétez le code ci-dessous pour trouver le pas optimal $\\alpha^*$ qui minimise $\\phi$, à l'aide de `scipy.optimize.minimize_scalar`.",
+          "Complétez la fonction `gradient_pas_optimal` : le calcul du pas `alpha` avec `minimize_scalar` pour minimiser $\\phi(\\alpha) = f(x_k - \\alpha \\nabla f(x_k))$, puis la mise à jour de `x`.",
         initialCode:
-          "from scipy.optimize import minimize_scalar\n\ndef f(x):\n    return x**2\n\ndef grad(x):\n    return 2*x\n\nx_k = 4\ng_k = grad(x_k)\n\ndef phi(alpha):\n    return f(x_k - alpha * g_k)\n\n# Trouvez alpha* qui minimise phi(alpha)\nalpha_star = ______\n\nx_next = x_k - alpha_star * g_k\nprint(x_next)\n",
+          "from scipy.optimize import minimize_scalar\n\ndef gradient_pas_optimal(f, grad, x0, eps):\n    x = x0\n    while abs(grad(x)) > eps:\n        phi = lambda alpha: f(x - alpha * grad(x))\n        # TODO : trouver alpha qui minimise phi avec minimize_scalar\n        # TODO : mettre à jour x selon x = x - alpha * grad(x)\n    return x\n",
+      },
+      {
+        id: "ex5q2",
+        statement:
+          "La fonction `gradient_pas_optimal(f, grad, x0, eps)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour trouver le minimum de $f(x) = x^2$.",
+        initialCode:
+          "from scipy.optimize import minimize_scalar\n\ndef gradient_pas_optimal(f, grad, x0, eps):\n    x = x0\n    while abs(grad(x)) > eps:\n        phi = lambda alpha: f(x - alpha * grad(x))\n        alpha = minimize_scalar(phi).x\n        x = x - alpha * grad(x)\n    return x\n\n\n# TODO : définir f(x) = x**2 et grad(x) = 2*x\nx0 = 5\neps = 0.0001\n# TODO : appeler gradient_pas_optimal avec f, grad, x0 et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -214,16 +200,23 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex6q1",
         statement:
-          "Complétez la boucle principale de l'algorithme du gradient conjugué ci-dessous : le résidu mis à jour `r_new`, le coefficient `beta`, et la nouvelle direction de recherche `d`.",
+          "Complétez la boucle principale de l'algorithme du gradient conjugué : le résidu mis à jour `r_new`, le coefficient `beta`, et la nouvelle direction de recherche `d`.",
         initialCode:
-          "import numpy as np\n\ndef gradient_conjugue(A, b, x0, eps):\n    x = x0\n    r = b - A @ x\n    d = r\n    while np.linalg.norm(r) > eps:\n        alpha = (r @ r) / (d @ (A @ d))\n        x = x + alpha * d\n        r_new = ______\n        beta = ______\n        d = ______\n        r = r_new\n    return x\n",
+          "import numpy as np\n\ndef gradient_conjugue(A, b, x0, eps):\n    x = x0\n    r = b - A @ x\n    d = r\n    while np.linalg.norm(r) > eps:\n        alpha = (r @ r) / (d @ (A @ d))\n        x = x + alpha * d\n        # TODO : calculer le nouveau résidu r_new\n        # TODO : calculer beta = (r_new . r_new) / (r . r)\n        # TODO : calculer la nouvelle direction d = r_new + beta * d\n        r = r_new\n    return x\n",
       },
       {
         id: "ex6q2",
         statement:
-          "Contrairement aux itérations suivantes, la toute première direction de recherche du gradient conjugué ne comporte pas de terme correctif $\\beta_k d_{k-1}$ : elle est égale au résidu initial (direction de plus forte descente). Complétez l'initialisation ci-dessous.",
+          "Complétez l'initialisation de l'algorithme du gradient conjugué : le résidu initial `r` et la direction initiale `d`, qui correspond à la direction de plus forte descente.",
         initialCode:
-          "import numpy as np\n\ndef gradient_conjugue(A, b, x0, eps):\n    x = x0\n    r = ______\n    d = ______\n    while np.linalg.norm(r) > eps:\n        alpha = (r @ r) / (d @ (A @ d))\n        x = x + alpha * d\n        r_new = r - alpha * (A @ d)\n        beta = (r_new @ r_new) / (r @ r)\n        d = r_new + beta * d\n        r = r_new\n    return x\n",
+          "import numpy as np\n\ndef gradient_conjugue(A, b, x0, eps):\n    x = x0\n    # TODO : initialiser le résidu r = b - A @ x\n    # TODO : initialiser la direction d = r\n    while np.linalg.norm(r) > eps:\n        alpha = (r @ r) / (d @ (A @ d))\n        x = x + alpha * d\n        r_new = r - alpha * (A @ d)\n        beta = (r_new @ r_new) / (r @ r)\n        d = r_new + beta * d\n        r = r_new\n    return x\n",
+      },
+      {
+        id: "ex6q3",
+        statement:
+          "La fonction `gradient_conjugue(A, b, x0, eps)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour résoudre le système $Ax = b$ avec $A = \\begin{pmatrix}4 & 1\\\\1 & 3\\end{pmatrix}$ et $b = (1, 2)$.",
+        initialCode:
+          "import numpy as np\n\ndef gradient_conjugue(A, b, x0, eps):\n    x = x0\n    r = b - A @ x\n    d = r\n    while np.linalg.norm(r) > eps:\n        alpha = (r @ r) / (d @ (A @ d))\n        x = x + alpha * d\n        r_new = r - alpha * (A @ d)\n        beta = (r_new @ r_new) / (r @ r)\n        d = r_new + beta * d\n        r = r_new\n    return x\n\n\n# TODO : définir A, b et x0 avec numpy\neps = 0.0001\n# TODO : appeler gradient_conjugue avec A, b, x0 et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -236,16 +229,23 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex7q1",
         statement:
-          "Complétez la fonction `newton_optim` ci-dessous, qui applique la mise à jour $x_{k+1} = x_k - H^{-1}\\nabla f(x_k)$, où `H` est la Hessienne évaluée en $x_k$.",
+          "Complétez la fonction `newton_optim`, qui applique la mise à jour $x_{k+1} = x_k - H^{-1}\\nabla f(x_k)$, où `H` est la Hessienne évaluée en $x_k$.",
         initialCode:
-          "import numpy as np\n\ndef newton_optim(grad, hess, x0, eps):\n    x = x0\n    g = grad(x)\n    while np.linalg.norm(g) > eps:\n        H = hess(x)\n        p = ______\n        x = ______\n        g = grad(x)\n    return x\n",
+          "import numpy as np\n\ndef newton_optim(grad, hess, x0, eps):\n    x = x0\n    while np.linalg.norm(grad(x)) > eps:\n        H = hess(x)\n        # TODO : calculer la direction p = H^{-1} @ grad(x)\n        # TODO : mettre à jour x selon x = x - p\n    return x\n",
       },
       {
         id: "ex7q2",
         statement:
           "Pour comparer l'amplitude du déplacement entre un pas de gradient à pas fixe et un pas de Newton, complétez le code ci-dessous qui calcule les deux directions de déplacement à partir du gradient `g` et de la Hessienne `H`.",
         initialCode:
-          "import numpy as np\n\ng = np.array([2.0, -1.0])\nH = np.array([[4.0, 0.0], [0.0, 2.0]])\nalpha = 0.1\n\n# Direction de déplacement du gradient à pas fixe : alpha * g\npas_gradient = ______\n\n# Direction de déplacement de Newton : H^{-1} @ g\npas_newton = ______\n\nprint(pas_gradient, pas_newton)\n",
+          "import numpy as np\n\ng = np.array([2.0, -1.0])\nH = np.array([[4.0, 0.0], [0.0, 2.0]])\nalpha = 0.1\n\n# TODO : calculer pas_gradient = alpha * g\n# TODO : calculer pas_newton = H^{-1} @ g (utiliser np.linalg.inv)\n\nprint(pas_gradient, pas_newton)\n",
+      },
+      {
+        id: "ex7q3",
+        statement:
+          "La fonction `newton_optim(grad, hess, x0, eps)` est déjà implémentée pour $f(x, y) = x^2 + y^2$. Complétez l'exemple d'utilisation ci-dessous.",
+        initialCode:
+          "import numpy as np\n\ndef newton_optim(grad, hess, x0, eps):\n    x = x0\n    while np.linalg.norm(grad(x)) > eps:\n        H = hess(x)\n        p = np.linalg.inv(H) @ grad(x)\n        x = x - p\n    return x\n\n\n# TODO : définir grad(x) et hess(x) pour f(x, y) = x**2 + y**2\nx0 = np.array([3.0, 3.0])\neps = 0.0001\n# TODO : appeler newton_optim avec grad, hess, x0 et eps\n# TODO : afficher le résultat\n",
       },
     ],
   },
@@ -258,16 +258,16 @@ export const DEFAULT_EXERCISES = [
       {
         id: "ex8q1",
         statement:
-          "Dans BFGS, on maintient une approximation `H` de l'inverse de la Hessienne, et la direction de descente est $p = -H\\nabla f(x)$. Complétez le code ci-dessous, qui calcule cette direction puis met à jour $x$ selon $x_{\\text{new}} = x + \\alpha p$.",
+          "Complétez la fonction `bfgs_update`, qui met à jour la matrice `H` (approximation de l'inverse de la Hessienne) à partir des vecteurs `s` et `y`, selon $\\rho = \\dfrac{1}{y^\\top s}$.",
         initialCode:
-          "import numpy as np\n\nH = np.eye(2)\ngrad = np.array([1.0, -2.0])\nalpha = 0.5\nx = np.array([0.0, 0.0])\n\n# Calculez la direction de descente p = -H @ grad\np = ______\n\n# Mettez à jour x selon x_new = x + alpha * p\nx_new = ______\n\nprint(x_new)\n",
+          "import numpy as np\n\ndef bfgs_update(H, s, y):\n    # TODO : calculer rho = 1 / (y . s)\n    I = np.eye(len(s))\n    H_new = (I - rho * np.outer(s, y)) @ H @ (I - rho * np.outer(y, s)) + rho * np.outer(s, s)\n    return H_new\n",
       },
       {
         id: "ex8q2",
         statement:
-          "Complétez la fonction `bfgs_update` ci-dessous, qui met à jour la matrice `H` (approximation de l'inverse de la Hessienne) à partir des vecteurs $s = x_{\\text{new}} - x$ et $y = \\nabla f(x_{\\text{new}}) - \\nabla f(x)$, selon $\\rho = \\dfrac{1}{y^\\top s}$.",
+          "La fonction `bfgs_update(H, s, y)` est déjà implémentée. Complétez l'exemple d'utilisation ci-dessous pour mettre à jour `H` à partir de `s` et `y`.",
         initialCode:
-          "import numpy as np\n\ndef bfgs_update(H, s, y):\n    # Calculez rho = 1 / (y^T s)\n    rho = ______\n    I = np.eye(len(s))\n    H_new = (I - rho * np.outer(s, y)) @ H @ (I - rho * np.outer(y, s)) + rho * np.outer(s, s)\n    return H_new\n",
+          "import numpy as np\n\ndef bfgs_update(H, s, y):\n    rho = 1 / (y @ s)\n    I = np.eye(len(s))\n    H_new = (I - rho * np.outer(s, y)) @ H @ (I - rho * np.outer(y, s)) + rho * np.outer(s, s)\n    return H_new\n\n\n# TODO : définir H (matrice identité 2x2), s et y\n# TODO : appeler bfgs_update avec H, s et y\n# TODO : afficher le résultat\n",
       },
     ],
   },
